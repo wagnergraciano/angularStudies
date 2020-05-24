@@ -1,0 +1,10 @@
+<div *ngIf="hero">
+  <!-- interpolation and pipe example -->
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>id:</span>{{hero.id}}</div>
+  <div>
+    <label>name:</label>
+    <!-- two-way binding -->
+    <input [(ngModel)]="hero.name" placeholder="name"/>
+  </div>
+</div>

@@ -9,15 +9,21 @@
   </li>
 </ul>
 
-<!-- directive *ngIf to show hero details only when one has been clicked -->
+<!-- dataflow from parent component to child component using property binding -->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
+
+
+<!-- CODE MADE IN TOPIC 2 directive *ngIf to show hero details only when one has been clicked
 <div *ngIf="selectedHero">
-  <!-- interpolation and pipe example -->
+  /* interpolation and pipe example */
   <h2>{{selectedHero.name | uppercase}} Details</h2>
   <div><span>id: </span>{{selectedHero.id}}</div>
   <div>
     <label>name:
-      <!-- two-way binding -->
+      /* two-way binding */
       <input [(ngModel)]="selectedHero.name" placeholder="name"/>
     </label>
   </div>
-</div>
+</div> -->
+
