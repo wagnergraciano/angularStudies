@@ -104,3 +104,52 @@ A hero detail component was created  to disengage details from heroes component.
 ```typescript
 @Input() hero: Hero;
 ```
+
+## Topic 4 - Add services
+<details>
+  <summary>Concepts</summary>
+  <ul>
+    <li>Services, consuming and providing</li>
+    <li>Synchronously and Asynchronously communication</li>
+  </ul>
+</details>
+
+Hero service was created to simulate fetching data from a server, with that concepts as  `Synchronously` and `Asynchronously` communication was introducted. It also was presented `@Injectble()` to do the Dependency injection and the `Provider` terms. It was also created a `messageService`.
+
+### Code sample review
+
+```HTML
+<!-- Father component -->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
+<!-- Child component -->
+<div *ngIf="hero">
+
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+  </div>
+
+</div>
+```
+
+```typescript
+  //injecting the service trought DI
+  constructor(private heroService: HeroService, private messageService: MessageService) { }
+
+  // Using the function provided by the HeroService in heroComponent
+  getHeroes(): void {
+    this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
+  }
+
+  // Fetch data by a observable
+  getHeroes(): Observable<Hero[]> {
+    // TODO: send the message _after_ fetching the heroes
+    this.messageService.add('HeroService: fetched heroes');
+    return of(HEROES);
+  }
+```
