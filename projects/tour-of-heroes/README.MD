@@ -79,3 +79,7 @@ A hero detail component was created  to disengage details from heroes component.
 ```typescript
 @Input() hero: Hero;
 ```
+<details>
+           <summary>Title 1</summary>
+           <p>Content 1 Content 1 Content 1 Content 1 Content 1</p>
+         </details>
