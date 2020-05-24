@@ -147,3 +147,6 @@ Hero service was created to simulate fetching data from a server, with that conc
     return of(HEROES);
   }
 ```
+### The application until now
+![Drag Racing](Dragster.jpg)
+
