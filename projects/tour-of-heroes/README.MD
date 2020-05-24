@@ -7,10 +7,12 @@ The `first project` of this initial studies was developed following angular docs
 ## Topic 1 - Hero editor
 <details>
   <summary>Concepts</summary>
-  <p>Create a component</p>
-  <p>interpolation</p>
-  <p>pipe</p>
-  <p>two-way binding</p>
+  <ul>
+    <li>Create a component</li>
+    <li>interpolation</li>
+    <li>pipe</li>
+    <li>two-way binding</li>
+  </ul>
 </details>
 
 It was created `Heroes component` (ng generate component <name>) and used concepts like `interpolation` to display heros info from a `interface` with id and name. Furthermore it was used `pipe` to upercase hero name and `two-way` binding in an input to change the hero's name, FormsModule was required to use `ngModel` as a input's property
@@ -35,6 +37,14 @@ It was created `Heroes component` (ng generate component <name>) and used concep
 
 
 ## Topic 2 - display a list
+<details>
+  <summary>Concepts</summary>
+  <ul>
+    <li>Directives: *ngFor, *ngIf</li>
+    <li>Event binding</li>
+    <li>Class binding</li>
+  </ul>
+</details>
 
 A list of heroes was created and displayed with `Directive *ngFor`, to give interactivity to the list `event binding (click)` was used, finaly the `directive *ngIf` was used to show the details only when the hero was clicked in list and `class binding` styled selected hero.
 ### Code sample review
@@ -60,6 +70,14 @@ A list of heroes was created and displayed with `Directive *ngFor`, to give inte
 ```
 
 ## Topic 3 - Create a feature component
+<details>
+  <summary>Concepts</summary>
+  <ul>
+    <li>Disengage features break two components</li>
+    <li>Data flow between parent and child component</li>
+  </ul>
+</details>
+
 
 A hero detail component was created  to disengage details from heroes component. To do so, `@Input decorator` was used to allow `property binding` wich is responsable to flow data from a parten component to a child component
 
