@@ -119,19 +119,13 @@ Hero service was created to simulate fetching data from a server, with that conc
 ### Code sample review
 
 ```HTML
-<!-- Father component -->
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<!-- Message component -->
+<div *ngIf="messageService.messages.length">
 
-<!-- Child component -->
-<div *ngIf="hero">
-
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </label>
-  </div>
+  <h2>Messages</h2>
+  <button class="clear"
+          (click)="messageService.clear()">clear</button>
+  <div *ngFor='let message of messageService.messages'> {{message}} </div>
 
 </div>
 ```
