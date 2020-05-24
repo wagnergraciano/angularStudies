@@ -10,7 +10,7 @@ import { Hero } from '../hero';
 })
 export class HeroesComponent implements OnInit {
 
-  constructor() { }
+  selectedHero: Hero;
 
   heroes = HEROES;
 
@@ -19,7 +19,13 @@ export class HeroesComponent implements OnInit {
     name: 'Windstorm'
   }
 
+  constructor() { }
+
   ngOnInit(): void {
+  }
+
+  onSelect(hero: Hero){
+    this.selectedHero = hero;
   }
 
 }

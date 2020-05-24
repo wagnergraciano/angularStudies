@@ -1,11 +1,23 @@
-<p>heroes works!</p>
-<div><span>id: </span>{{hero.id}}</div>
-<div><span>name: </span>{{hero.name}}</div>
-<div>
-  <label>nome:
-    <!-- two-way binding -->
-    <input [(ngModel)]="hero.name" placeholder="name">
-  </label>
-  <!-- pipe example  -->
-  <h2>{{hero.name | uppercase}} detail</h2>
+<h2>My heroes</h2>
+<ul class="heroes">
+  <!-- directive ngfor to populate a list
+  event binding to listen click event -->
+  <li *ngFor="let hero of heroes"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span>{{hero.name}}
+  </li>
+</ul>
+
+<!-- directive *ngIf to show hero details only when one has been clicked -->
+<div *ngIf="selectedHero">
+  <!-- interpolation and pipe example -->
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedHero.id}}</div>
+  <div>
+    <label>name:
+      <!-- two-way binding -->
+      <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+    </label>
+  </div>
 </div>
