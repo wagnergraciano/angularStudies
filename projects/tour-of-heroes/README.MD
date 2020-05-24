@@ -1,8 +1,8 @@
 
 
-# 1 - Tour of heroes
+# Tour of heroes
 
-The `first project` of this initial studies was developed following angular docs sugested application
+The `first project` of this initial studies was developed following angular docs sugested application in [angular docs](https://angular.io/tutorial)
 
 ## Topic 1 - Hero editor
 
@@ -80,6 +80,24 @@ A hero detail component was created  to disengage details from heroes component.
 @Input() hero: Hero;
 ```
 <details>
-           <summary>Title 1</summary>
-           <p>Content 1 Content 1 Content 1 Content 1 Content 1</p>
-         </details>
+  <summary>## Topic 1 - Hero editor</summary>
+  It was created `Heroes component` (ng generate component <name>) and used concepts like `interpolation` to display heros info from a `interface` with id and name. Furthermore it was used `pipe` to upercase hero name and `two-way` binding in an input to change the hero's name, FormsModule was required to use `ngModel` as a input's property
+
+### Code sample review
+
+```HTML
+<!-- interpolation and component  -->
+<h1>{{title}}</h1>
+<app-heroes></app-heroes>
+
+<!-- pipe -->
+<h2>{{hero.name | uppercase}} Details</h2>
+
+<!-- two-way binding -->
+<div>
+  <label>name:
+    <input [(ngModel)]="hero.name" placeholder="name"/>
+  </label>
+</div>
+```
+</details>
