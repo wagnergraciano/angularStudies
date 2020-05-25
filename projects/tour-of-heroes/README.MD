@@ -155,40 +155,45 @@ Hero service was created to simulate fetching data from a server, with that conc
   <summary>Concepts</summary>
   <ul>
     <li>Routing</li>
+    <ul>
+      <li><router-outlet></router-outlet></li>
+      <li><a routerLink="/heroes">Heroes</a></li>
+      <li>{ path: 'dashboard', component: DashboardComponent },</li>
+      <li>private route: ActivatedRoute</li>
+      <li>private heroService: HeroService</li>
+      <li>private location: Location</li>
+    </ul>
     <li>Dashboard</li>
   </ul>
 </details>
 
-Hero service was created to simulate fetching data from a server, with that concepts as  `Synchronously` and `Asynchronously` communication was introducted. It also was presented `@Injectble()` to do the Dependency injection and the `Provider` terms. It was also created a `messageService`.
+A new component `Dashborad` was created to use `Routes`. Routes with id has been made to each hero detail using `{ path: 'detail/:id', component: HeroDetailComponent }` in app-routes.module.ts and `routerLink="/detail/{{hero.id}}">` in the template. In the component class a function was created to get the id using `const id = +this.route.snapshot.paramMap.get('id');`. After this work, no changes in the template is required.
 
 ### Code sample review
-
-```HTML
-<!-- Message component -->
-<div *ngIf="messageService.messages.length">
-
-  <h2>Messages</h2>
-  <button class="clear"
-          (click)="messageService.clear()">clear</button>
-  <div *ngFor='let message of messageService.messages'> {{message}} </div>
-
-</div>
-```
-
 ```typescript
   //injecting the service trought DI
-  constructor(private heroService: HeroService, private messageService: MessageService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private heroService: HeroService,
+    private location: Location
+  ) {}
 
-  // Using the function provided by the HeroService in heroComponent
-  getHeroes(): void {
-    this.heroService.getHeroes()
-        .subscribe(heroes => this.heroes = heroes);
+
+  //The route.snapshot is a static image of the route information shortly after the component was created.
+  // The paramMap is a dictionary of route parameter values extracted from the URL. The "id" key returns the id of the hero to fetch.
+  // Route parameters are always strings. The JavaScript (+) operator converts the string to a number, which is what a hero id should be.
+  getHero(): void {
+  const id = +this.route.snapshot.paramMap.get('id');
+  this.heroService.getHero(id)
+    .subscribe(hero => this.hero = hero);
   }
 
-  // Fetch data by a observable
-  getHeroes(): Observable<Hero[]> {
-    // TODO: send the message _after_ fetching the heroes
-    this.messageService.add('HeroService: fetched heroes');
-    return of(HEROES);
-  }
+  //Routes module
+  const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'detail/:id', component: HeroDetailComponent },
+  { path: 'heroes', component: HeroesComponent }
+];
+
 ```
