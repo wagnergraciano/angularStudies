@@ -147,6 +147,48 @@ Hero service was created to simulate fetching data from a server, with that conc
     return of(HEROES);
   }
 ```
-### The application until now
+### An image of the application until now
 ![List of heroes, details and message](topic4.png)
 
+## Topic 5 - Add services
+<details>
+  <summary>Concepts</summary>
+  <ul>
+    <li>Routing</li>
+    <li>Dashboard</li>
+  </ul>
+</details>
+
+Hero service was created to simulate fetching data from a server, with that concepts as  `Synchronously` and `Asynchronously` communication was introducted. It also was presented `@Injectble()` to do the Dependency injection and the `Provider` terms. It was also created a `messageService`.
+
+### Code sample review
+
+```HTML
+<!-- Message component -->
+<div *ngIf="messageService.messages.length">
+
+  <h2>Messages</h2>
+  <button class="clear"
+          (click)="messageService.clear()">clear</button>
+  <div *ngFor='let message of messageService.messages'> {{message}} </div>
+
+</div>
+```
+
+```typescript
+  //injecting the service trought DI
+  constructor(private heroService: HeroService, private messageService: MessageService) { }
+
+  // Using the function provided by the HeroService in heroComponent
+  getHeroes(): void {
+    this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
+  }
+
+  // Fetch data by a observable
+  getHeroes(): Observable<Hero[]> {
+    // TODO: send the message _after_ fetching the heroes
+    this.messageService.add('HeroService: fetched heroes');
+    return of(HEROES);
+  }
+```

@@ -2,17 +2,16 @@
 <ul class="heroes">
   <!-- directive ngfor to populate a list
   event binding to listen click event -->
-  <li *ngFor="let hero of heroes"
-    [class.selected]="hero === selectedHero"
-    (click)="onSelect(hero)">
-    <span class="badge">{{hero.id}}</span>{{hero.name}}
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span>{{hero.name}}
+    </a>
   </li>
 </ul>
 
+<!-- DELETED IN TOPIC 5 -->
 <!-- dataflow from parent component to child component using property binding -->
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
-
-
+<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
 
 <!-- CODE MADE IN TOPIC 2 directive *ngIf to show hero details only when one has been clicked
 <div *ngIf="selectedHero">
