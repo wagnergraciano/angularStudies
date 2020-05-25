@@ -156,7 +156,7 @@ Hero service was created to simulate fetching data from a server, with that conc
   <ul>
     <li>Routing</li>
     <ul>
-      <li><router-outlet></router-outlet></li>
+      <li><!-- <router-outlet></router-outlet> --></li>
       <li><a routerLink="/heroes">Heroes</a></li>
       <li>{ path: 'dashboard', component: DashboardComponent },</li>
       <li>private route: ActivatedRoute</li>
