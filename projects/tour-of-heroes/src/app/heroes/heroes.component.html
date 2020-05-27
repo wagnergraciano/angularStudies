@@ -1,4 +1,15 @@
 <h2>My heroes</h2>
+
+<div>
+  <label>Hero name:
+    <input #heroName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div>
+
 <ul class="heroes">
   <!-- directive ngfor to populate a list
   event binding to listen click event -->
@@ -6,9 +17,9 @@
     <a routerLink="/detail/{{hero.id}}">
       <span class="badge">{{hero.id}}</span>{{hero.name}}
     </a>
+    <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
   </li>
 </ul>
-
 <!-- DELETED IN TOPIC 5 -->
 <!-- dataflow from parent component to child component using property binding -->
 <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
