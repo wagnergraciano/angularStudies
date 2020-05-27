@@ -123,6 +123,127 @@
           }
         }
       }
+    },
+    "shopping-cart": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/shopping-cart",
+      "sourceRoot": "projects/shopping-cart/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/shopping-cart",
+            "index": "projects/shopping-cart/src/index.html",
+            "main": "projects/shopping-cart/src/main.ts",
+            "polyfills": "projects/shopping-cart/src/polyfills.ts",
+            "tsConfig": "projects/shopping-cart/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/shopping-cart/src/favicon.ico",
+              "projects/shopping-cart/src/assets"
+            ],
+            "styles": [
+              "projects/shopping-cart/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/shopping-cart/src/environments/environment.ts",
+                  "with": "projects/shopping-cart/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "shopping-cart:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "shopping-cart:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "shopping-cart:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/shopping-cart/src/test.ts",
+            "polyfills": "projects/shopping-cart/src/polyfills.ts",
+            "tsConfig": "projects/shopping-cart/tsconfig.spec.json",
+            "karmaConfig": "projects/shopping-cart/karma.conf.js",
+            "assets": [
+              "projects/shopping-cart/src/favicon.ico",
+              "projects/shopping-cart/src/assets"
+            ],
+            "styles": [
+              "projects/shopping-cart/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/shopping-cart/tsconfig.app.json",
+              "projects/shopping-cart/tsconfig.spec.json",
+              "projects/shopping-cart/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/shopping-cart/e2e/protractor.conf.js",
+            "devServerTarget": "shopping-cart:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "shopping-cart:serve:production"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "tour-of-heroes"
 }
